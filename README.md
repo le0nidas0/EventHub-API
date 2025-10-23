@@ -31,4 +31,51 @@ O projeto está totalmente containerizado. A forma mais rápida e recomendada de
 Compile o projeto para gerar o arquivo `.jar`:
 
 ```bash
+O JAR será gerado em /target (ex: EventHub-API-0.0.1-SNAPSHOT.jar)
 
+🐳 2. Iniciar o Ambiente com Docker Compose
+bash
+docker compose up --build -d
+🌐 3. Acesso à Aplicação
+API Principal: http://localhost:8080
+
+🧹 Derrubar os Containers
+bash
+docker compose down
+🔒 Segurança e Autenticação
+A API utiliza autenticação baseada em JWT (JSON Web Tokens), sendo completamente stateless.
+
+Obter Token: POST /api/usuarios/login
+
+Uso do Token: Inclua no cabeçalho:
+
+http
+Authorization: Bearer <JWT_TOKEN>
+Perfis de Usuário
+Público: Sem token
+
+Autenticado: Qualquer token válido
+
+Organizador: Token válido com a role ORGANIZADOR
+
+🛣️ Endpoints da API
+1. Usuários & Autenticação (/api/usuarios)
+Método	Endpoint	Descrição	Autorização
+POST	/registrar	Cria um novo usuário (organizador: true/false)	PÚBLICO
+POST	/login	Autentica o usuário e retorna JWT	PÚBLICO
+GET	/{id}	Busca usuário por ID	PÚBLICO
+DELETE	/{id}	Remove usuário	PÚBLICO
+2. Eventos (/api/eventos)
+Método	Endpoint	Descrição	Autorização
+POST	/	Cria evento vinculado ao organizador logado	ORGANIZADOR
+GET	/	Lista todos os eventos ativos	PÚBLICO
+GET	/futuros	Lista eventos com data futura	PÚBLICO
+GET	/{id}	Detalhes de um evento específico	PÚBLICO
+PUT	/{id}	Atualiza evento (somente organizador dono)	ORGANIZADOR
+DELETE	/{id}	Exclui evento (somente organizador dono)	ORGANIZADOR
+3. Inscrições (/api/inscricoes)
+Método	Endpoint	Descrição	Autorização
+POST	/evento/{eventoId}	Inscreve usuário autenticado no evento	AUTENTICADO
+GET	/minhas	Lista inscrições do usuário logado	AUTENTICADO
+DELETE	/{inscricaoId}	Cancela inscrição	AUTENTICADO
+GET	/	Lista todas as inscrições do sistema	ORGANIZADOR
