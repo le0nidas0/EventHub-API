@@ -58,24 +58,38 @@ Autenticado: Qualquer token válido
 
 Organizador: Token válido com a role ORGANIZADOR
 
-🛣️ Endpoints da API
-1. Usuários & Autenticação (/api/usuarios)
-Método	Endpoint	Descrição	Autorização
-POST	/registrar	Cria um novo usuário (organizador: true/false)	PÚBLICO
-POST	/login	Autentica o usuário e retorna JWT	PÚBLICO
-GET	/{id}	Busca usuário por ID	PÚBLICO
-DELETE	/{id}	Remove usuário	PÚBLICO
-2. Eventos (/api/eventos)
-Método	Endpoint	Descrição	Autorização
-POST	/	Cria evento vinculado ao organizador logado	ORGANIZADOR
-GET	/	Lista todos os eventos ativos	PÚBLICO
-GET	/futuros	Lista eventos com data futura	PÚBLICO
-GET	/{id}	Detalhes de um evento específico	PÚBLICO
-PUT	/{id}	Atualiza evento (somente organizador dono)	ORGANIZADOR
-DELETE	/{id}	Exclui evento (somente organizador dono)	ORGANIZADOR
-3. Inscrições (/api/inscricoes)
-Método	Endpoint	Descrição	Autorização
-POST	/evento/{eventoId}	Inscreve usuário autenticado no evento	AUTENTICADO
-GET	/minhas	Lista inscrições do usuário logado	AUTENTICADO
-DELETE	/{inscricaoId}	Cancela inscrição	AUTENTICADO
-GET	/	Lista todas as inscrições do sistema	ORGANIZADOR
+## 🛣️ Endpoints da API
+
+### 👤 Usuários & Autenticação (`/api/usuarios`)
+
+| Método | Endpoint     | Descrição                                           | Autorização |
+|--------|--------------|-----------------------------------------------------|-------------|
+| `POST` | `/registrar` | Cria um novo usuário (`organizador: true/false`)   | PÚBLICO     |
+| `POST` | `/login`     | Autentica o usuário e retorna JWT                  | PÚBLICO     |
+| `GET`  | `/{id}`      | Busca usuário por ID                               | PÚBLICO     |
+| `DELETE` | `/{id}`    | Remove usuário                                     | PÚBLICO     |
+
+---
+
+### 🎫 Eventos (`/api/eventos`)
+
+| Método | Endpoint     | Descrição                                           | Autorização |
+|--------|--------------|-----------------------------------------------------|-------------|
+| `POST` | `/`          | Cria evento vinculado ao organizador logado        | ORGANIZADOR |
+| `GET`  | `/`          | Lista todos os eventos ativos                      | PÚBLICO     |
+| `GET`  | `/futuros`   | Lista eventos com data futura                      | PÚBLICO     |
+| `GET`  | `/{id}`      | Detalhes de um evento específico                   | PÚBLICO     |
+| `PUT`  | `/{id}`      | Atualiza evento (somente organizador dono)         | ORGANIZADOR |
+| `DELETE` | `/{id}`    | Exclui evento (somente organizador dono)           | ORGANIZADOR |
+
+---
+
+### 📝 Inscrições (`/api/inscricoes`)
+
+| Método | Endpoint                     | Descrição                                           | Autorização |
+|--------|------------------------------|-----------------------------------------------------|-------------|
+| `POST` | `/evento/{eventoId}`         | Inscreve usuário autenticado no evento              | AUTENTICADO |
+| `GET`  | `/minhas`                    | Lista inscrições do usuário logado                  | AUTENTICADO |
+| `DELETE` | `/{inscricaoId}`           | Cancela inscrição                                   | AUTENTICADO |
+| `GET`  | `/`                          | Lista todas as inscrições do sistema                | ORGANIZADOR |
+
