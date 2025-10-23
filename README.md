@@ -78,10 +78,17 @@ GET	/{id}	Detalhes de um evento específico	PÚBLICO
 PUT	/{id}	Atualiza evento (somente organizador dono)	ORGANIZADOR
 DELETE	/{id}	Exclui evento (somente organizador dono)	ORGANIZADOR
 
-
 3. Inscrições (/api/inscricoes)
 Método	Endpoint	Descrição	Autorização
 POST	/evento/{eventoId}	Inscreve usuário autenticado no evento	AUTENTICADO
 GET	/minhas	Lista inscrições do usuário logado	AUTENTICADO
 DELETE	/{inscricaoId}	Cancela inscrição	AUTENTICADO
 GET	/	Lista todas as inscrições do sistema	ORGANIZADOR
+````
+Acesso e DocumentaçãoO serviço estará disponível em http://localhost:8080/api 
+Principal: http://localhost:8080Endpoint 
+RaizDocumentação Interativa (Swagger UI) http://localhost:8080/swagger-ui.html
+Interface gráfica para testar todos os endpoints.
+
+
+
