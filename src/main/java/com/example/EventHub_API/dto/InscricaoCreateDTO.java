@@ -6,11 +6,6 @@ import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 public record InscricaoCreateDTO(
-        @NotNull(message = "O ID do usuário é obrigatório.")
-        Long usuarioId,
-
-        @NotNull(message = "O ID do evento é obrigatório.")
-        Long eventoId,
 
         @NotNull(message = "O método de pagamento é obrigatório.")
         MetodoPagamento metodoPagamento,
