@@ -19,6 +19,8 @@ services:
 
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
 
+      - jwt.secret.key=R2E4T6Y8U0I2O4P6A8S0D2F4G6H8J0K2L4Z6X8C0V2B4N6M8Q0W2E4R6
+
     restart: on-failure
 
   db:
