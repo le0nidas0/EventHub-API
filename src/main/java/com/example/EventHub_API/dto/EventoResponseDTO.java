@@ -1,13 +1,13 @@
 package com.example.EventHub_API.dto;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public record EventoResponseDTO(
         Long id,
         String nome,
         String descricao,
-        LocalDate data,
+        LocalDateTime data,
         BigDecimal precoIngresso,
         Integer capacidadeMaxima,
         Integer vagasDisponiveis,

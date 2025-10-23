@@ -2,14 +2,14 @@ package com.example.EventHub_API.dto;
 
 import jakarta.validation.constraints.*;
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public record EventoUpdateDTO(
         String nome,
         String descricao,
 
         @FutureOrPresent(message = "A data deve ser futura ou presente.")
-        LocalDate data,
+        LocalDateTime data,
 
         @Min(value = 1, message = "A capacidade mínima deve ser 1.")
         Integer capacidadeMaxima,

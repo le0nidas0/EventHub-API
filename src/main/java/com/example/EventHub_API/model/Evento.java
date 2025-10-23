@@ -1,18 +1,17 @@
 package com.example.EventHub_API.model;
 
-
 import jakarta.persistence.*;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.FutureOrPresent;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "eventos")
@@ -32,23 +31,19 @@ public class Evento {
     @NotBlank
     private String descricao;
 
-    @NotNull
-    private LocalDate data;
+    @FutureOrPresent
+    private LocalDateTime data;
 
-    @NotNull
+    @Min(value = 1)
     private Integer capacidadeMaxima;
 
-    @NotNull
+    @DecimalMin(value = "0.00")
     private BigDecimal precoIngresso;
 
-    @ManyToOne
-    @JoinColumn(name = "organizador_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "organizador_id", nullable = false)
     private Usuario organizador;
 
-    @OneToMany(mappedBy = "evento", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Inscricao> inscricoes = new ArrayList<>();
-
-    public boolean estaCheio() {
-        return inscricoes.size() >= capacidadeMaxima;
-    }
+    @Transient
+    private Integer vagasDisponiveis;
 }
