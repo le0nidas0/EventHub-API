@@ -16,5 +16,9 @@ public record UsuarioCreateDTO(
         @Size(min = 8, max = 15, message = "Telefone deve ter entre 8 e 15 caracteres.")
         String telefone,
 
+        @NotBlank(message = "A senha é obrigatória.")
+        @Size(min = 8, message = "A senha deve ter no mínimo 8 caracteres.")
+        String senha,
+
         Boolean organizador
 ) {}
