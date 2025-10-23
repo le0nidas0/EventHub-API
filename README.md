@@ -85,9 +85,8 @@ GET	/minhas	Lista inscrições do usuário logado	AUTENTICADO
 DELETE	/{inscricaoId}	Cancela inscrição	AUTENTICADO
 GET	/	Lista todas as inscrições do sistema	ORGANIZADOR
 ````
-Acesso e DocumentaçãoO serviço estará disponível em http://localhost:8080/api 
-Principal: http://localhost:8080Endpoint 
-RaizDocumentação Interativa (Swagger UI) http://localhost:8080/swagger-ui.html
+Acesso e Documentação do serviço estará disponível  
+(Swagger UI)	http://localhost:8080/swagger-ui.html
 Interface gráfica para testar todos os endpoints.
 
 
